@@ -5,7 +5,7 @@
 $backgroundColor: #2b2b2b;
 
 // Primary/body text
-$mainFont: 'Lato', sans-serif;
+$mainFont: "futura-pt", sans-serif;
 $mainFontSize: 36px;
 $mainColor: #eee;
 
@@ -14,19 +14,22 @@ $blockMargin: 20px;
 
 // Headings
 $headingMargin: 0 0 $blockMargin 0;
-$headingFont: 'League Gothic', Impact, sans-serif;
+$headingFont: "futura-pt", Impact, sans-serif;
 $headingColor: #eee;
 $headingLineHeight: 1.2;
 $headingLetterSpacing: normal;
 $headingTextTransform: uppercase;
 $headingTextShadow: none;
-$headingFontWeight: normal;
+$headingFontWeight: 700;
 $heading1TextShadow: $headingTextShadow;
 
 $heading1Size: 3.77em;
 $heading2Size: 2.11em;
 $heading3Size: 1.55em;
 $heading4Size: 1.00em;
+
+//Monospace fonts
+$codeFont: "fira-mono", monospace;
 
 // Links and actions
 $linkColor: #13DAEC;

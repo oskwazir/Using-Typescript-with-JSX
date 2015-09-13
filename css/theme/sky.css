@@ -11,6 +11,9 @@
 /*********************************************
  * GLOBAL STYLES
  *********************************************/
+* {
+  font-variant-ligatures: common-ligatures; }
+
 body {
   background: #add9e4;
   background: -moz-radial-gradient(center, circle cover, #f7fbfc 0%, #add9e4 100%);
@@ -43,12 +46,13 @@ body {
   margin: 0 0 20px 0;
   color: #333;
   font-family: 'Quicksand', sans-serif;
-  font-weight: normal;
+  font-weight: 700;
   line-height: 1.2;
   letter-spacing: -0.08em;
   text-transform: uppercase;
   text-shadow: none;
-  word-wrap: break-word; }
+  word-wrap: break-word;
+  font-style: italic; }
 
 .reveal h1 {
   font-size: 3.77em; }
@@ -136,13 +140,13 @@ body {
   margin: 20px auto;
   text-align: left;
   font-size: 0.55em;
-  font-family: monospace;
+  font-family: "fira-mono", monospace;
   line-height: 1.2em;
   word-wrap: break-word;
   box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.3); }
 
 .reveal code {
-  font-family: monospace; }
+  font-family: "fira-mono", monospace; }
 
 .reveal pre code {
   display: block;

@@ -10,6 +10,9 @@
 /*********************************************
  * GLOBAL STYLES
  *********************************************/
+* {
+  font-variant-ligatures: common-ligatures; }
+
 body {
   background: #1c1e20;
   background: -moz-radial-gradient(center, circle cover, #555a5f 0%, #1c1e20 100%);
@@ -21,7 +24,7 @@ body {
   background-color: #2b2b2b; }
 
 .reveal {
-  font-family: 'Lato', sans-serif;
+  font-family: "futura-pt", sans-serif;
   font-size: 36px;
   font-weight: normal;
   color: #eee; }
@@ -41,13 +44,14 @@ body {
 .reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5, .reveal h6 {
   margin: 0 0 20px 0;
   color: #eee;
-  font-family: 'League Gothic', Impact, sans-serif;
-  font-weight: normal;
+  font-family: "futura-pt", Impact, sans-serif;
+  font-weight: 700;
   line-height: 1.2;
   letter-spacing: normal;
   text-transform: uppercase;
   text-shadow: 0px 0px 6px rgba(0, 0, 0, 0.2);
-  word-wrap: break-word; }
+  word-wrap: break-word;
+  font-style: italic; }
 
 .reveal h1 {
   font-size: 3.77em; }
@@ -135,13 +139,13 @@ body {
   margin: 20px auto;
   text-align: left;
   font-size: 0.55em;
-  font-family: monospace;
+  font-family: "fira-mono", monospace;
   line-height: 1.2em;
   word-wrap: break-word;
   box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.3); }
 
 .reveal code {
-  font-family: monospace; }
+  font-family: "fira-mono", monospace; }
 
 .reveal pre code {
   display: block;

@@ -10,6 +10,9 @@
 /*********************************************
  * GLOBAL STYLES
  *********************************************/
+* {
+  font-variant-ligatures: common-ligatures; }
+
 body {
   background: #fff;
   background-color: #fff; }
@@ -36,12 +39,13 @@ body {
   margin: 0 0 20px 0;
   color: #000;
   font-family: 'News Cycle', Impact, sans-serif;
-  font-weight: normal;
+  font-weight: 700;
   line-height: 1.2;
   letter-spacing: normal;
   text-transform: none;
   text-shadow: none;
-  word-wrap: break-word; }
+  word-wrap: break-word;
+  font-style: italic; }
 
 .reveal h1 {
   font-size: 3.77em; }
@@ -129,13 +133,13 @@ body {
   margin: 20px auto;
   text-align: left;
   font-size: 0.55em;
-  font-family: monospace;
+  font-family: "fira-mono", monospace;
   line-height: 1.2em;
   word-wrap: break-word;
   box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.3); }
 
 .reveal code {
-  font-family: monospace; }
+  font-family: "fira-mono", monospace; }
 
 .reveal pre code {
   display: block;
