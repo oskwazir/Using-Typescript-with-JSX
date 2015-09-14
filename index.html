@@ -44,41 +44,94 @@
 			<div class="slides">
 				<section>
 					<h1>JSX &amp; TypeScript</h1>
-					<h3>Getting them to work together</h3>
+					<h3>Figuring out how to use them together</h3>
 					<p>
 						<small><a href="https://github.com/thewazir">Omer Wazir</a> / <a href="http://twitter.com/thewazir">@thewazir</a></small>
 					</p>
 				</section>
 
 				<section>
-					<h2>What TypeScript offers</h2>
-					<p><a href="https://github.com/Microsoft/TypeScript-Handbook/blob/master/pages/Basic%20Types.md#string">String</a> &#183; <a href="https://github.com/Microsoft/TypeScript-Handbook/blob/master/pages/Basic%20Types.md#number">Number</a> &#183; <a href="https://github.com/Microsoft/TypeScript-Handbook/blob/master/pages/Basic%20Types.md#boolean">Boolean</a> &#183; <a href="https://github.com/Microsoft/TypeScript-Handbook/blob/master/pages/Basic%20Types.md#enum">Enum</a> &#183; <a href="https://github.com/Microsoft/TypeScript-Handbook/blob/master/pages/Basic%20Types.md#any">Any</a> &#183; <a href="https://github.com/Microsoft/TypeScript-Handbook/blob/master/pages/Basic%20Types.md#void">Void</a> &#183; <a href="https://github.com/Microsoft/TypeScript-Handbook/blob/master/pages/Interfaces.md">Interfaces</a> &#183; <a href="https://github.com/Microsoft/TypeScript-Handbook/blob/master/pages/Classes.md">Classes</a> &#183; <a href="https://github.com/Microsoft/TypeScript-Handbook/blob/master/pages/Classes.md#public-private-and-protected-modifiers">Public, private, and protected modifiers</a> &#183; <a href="https://github.com/Microsoft/TypeScript-Handbook/blob/master/pages/Namespaces%20and%20Modules.md">Namespaces &amp; Modules</a> &#183; <a href="https://github.com/Microsoft/TypeScript-Handbook/blob/master/pages/Generics.md">Generics</a> &#183; <a href="https://github.com/Microsoft/TypeScript-Handbook/blob/master/pages/Functions.md#optional-and-default-parameters">Optional and Default Parameters</a> &#183; <a href="https://github.com/Microsoft/TypeScript-Handbook/blob/master/pages/Functions.md#rest-parameters">Rest Parameters</a> &#183; <a href="https://github.com/Microsoft/TypeScript-Handbook/blob/master/pages/Functions.md#overloads">Function Overloading</a> &#183; <a href="https://github.com/Microsoft/TypeScript-Handbook/blob/master/pages/Mixins.md#mixin-sample">Mixins</a> &#183; <a href="https://github.com/Microsoft/TypeScript-Handbook/blob/master/pages/Declaration%20Merging.md">Declaration Merging</a> &#183; <a href="https://github.com/Microsoft/TypeScript-Handbook/blob/master/pages/Type%20Compatibility.md">Structural Subtyping</a> &#183; <a href="https://github.com/Microsoft/TypeScript-Handbook/blob/master/pages/Writing%20Definition%20Files.md">Definition Files</a> &#183; <a href="https://github.com/Microsoft/TypeScript/wiki/What%27s-new-in-TypeScript">...and in release 1.6 JSX! &#183;  Intersection types! &#183;  Local type declarations! &#183; Class expressions! &#183; Extending expressions! &#183;  Abstract classes! Other stuff!</a>
-						
+					<h2>Disclaimer</h2>
+					<p>
+						JSX support in TypeScript was announced Sept 2nd 2015. Almost every article on this topic rips from the <a href="https://github.com/Microsoft/TypeScript/wiki/JSX">JSX page on the
+						TypeScript wiki</a> because there's very little officially said on the topic. This presentation is based off the same wiki post.
 					</p>
 				</section>
 
 				<section>
-					<h2>Slides</h2>
+					<h2>What TypeScript offers</h2>
 					<p>
-						Not a coder? Not a problem. There's a fully-featured visual editor for authoring these, try it out at <a href="http://slides.com" target="_blank">http://slides.com</a>.
+						<a href="https://github.com/Microsoft/TypeScript-Handbook/blob/master/pages/Basic%20Types.md#string">String</a> &#183; <a href="https://github.com/Microsoft/TypeScript-Handbook/blob/master/pages/Basic%20Types.md#number">Number</a> &#183; <a href="https://github.com/Microsoft/TypeScript-Handbook/blob/master/pages/Basic%20Types.md#boolean">Boolean</a>
+						<a href="https://github.com/Microsoft/TypeScript-Handbook/blob/master/pages/Basic%20Types.md#enum">Enum</a> &#183;
+						<a href="https://github.com/Microsoft/TypeScript-Handbook/blob/master/pages/Basic%20Types.md#any">Any</a> &#183;
+						<a href="https://github.com/Microsoft/TypeScript-Handbook/blob/master/pages/Basic%20Types.md#void">Void</a>  &#183; Symbols  &#183; let &amp; const  &#183; ES7 Decorators proposal  &#183; Decorator type metadata  &#183;
+						<a href="https://github.com/Microsoft/TypeScript-Handbook/blob/master/pages/Interfaces.md">Interfaces</a> &#183;
+						<a href="https://github.com/Microsoft/TypeScript-Handbook/blob/master/pages/Classes.md">Classes</a> &#183;
+						<a href="https://github.com/Microsoft/TypeScript-Handbook/blob/master/pages/Classes.md#public-private-and-protected-modifiers">Public, private, and protected modifiers</a>
+						&#183; <a href="https://github.com/Microsoft/TypeScript-Handbook/blob/master/pages/Namespaces%20and%20Modules.md">Namespaces &amp; Modules</a> &#183;
+						 <a href="https://github.com/Microsoft/TypeScript-Handbook/blob/master/pages/Generics.md">Generics</a> &#183; <a href="https://github.com/Microsoft/TypeScript-Handbook/blob/master/pages/Functions.md#optional-and-default-parameters">Optional and Default Parameters</a>
+						  &#183; <a href="https://github.com/Microsoft/TypeScript-Handbook/blob/master/pages/Functions.md#rest-parameters">Rest Parameters</a> &#183;
+							<a href="https://github.com/Microsoft/TypeScript-Handbook/blob/master/pages/Functions.md#overloads">Function Overloading</a> &#183; <a href="https://github.com/Microsoft/TypeScript-Handbook/blob/master/pages/Mixins.md#mixin-sample">Mixins</a>
+							 &#183; <a href="https://github.com/Microsoft/TypeScript-Handbook/blob/master/pages/Declaration%20Merging.md">Declaration Merging</a>
+							 &#183; <a href="https://github.com/Microsoft/TypeScript-Handbook/blob/master/pages/Type%20Compatibility.md">Structural Subtyping</a> &#183;
+							  <a href="https://github.com/Microsoft/TypeScript-Handbook/blob/master/pages/Writing%20Definition%20Files.md">Definition Files</a> &#183;
+								 <a href="https://github.com/Microsoft/TypeScript/wiki/What%27s-new-in-TypeScript">...and in release 1.6 JSX! &#183;  Intersection types! &#183;  Local type declarations! &#183; Class expressions! &#183; Extending expressions!
+									  &#183;  Abstract classes!</a>   &#183; TypeScript has <span style="font-weight:700;">A LOT</span> of features
+
 					</p>
 				</section>
 
-				<section id="transitions">
-					<h2>Transition Styles</h2>
+				<section>
+					<h2>Installing TypeScript</h2>
+					<p>JSX support is coming in TypeScript 1.6 which is in a beta state.<br />
+						For now you can install these two ways</p>
+						<pre><code>
+//1.6.0-beta with JSX Support
+npm install typescript@1.6.0-beta
+
+//Nightly build
+npm install -g typescript@next
+							</code>
+						</pre>
+						<p>Works wherever Node works</p>
+				</section>
+
+			<section>
+				<h2>Running TypeScript</h2>
+				<ul>
+				<li>You can call <code>tsc</code> in the command line if TypeScript is installed globally.</li>
+				<li>Run TypeScript in a <code>gulp</code> task using <code>gulp-typescript</code> to help you.</li>
+				<li>I don't understand WebPack so maybe there's a way to get it to work too</li>
+			<li>IDE/Editor can run TypeScript to check your code</li></ul>
+			</section>
+
+				<section>
+					<h2>Editor Support</h2>
 					<p>
-						You can select from different transitions, like: <br>
-						<a href="?transition=none#/transitions">None</a> -
-						<a href="?transition=fade#/transitions">Fade</a> -
-						<a href="?transition=slide#/transitions">Slide</a> -
-						<a href="?transition=convex#/transitions">Convex</a> -
-						<a href="?transition=concave#/transitions">Concave</a> -
-						<a href="?transition=zoom#/transitions">Zoom</a>
+						Visual Studio includes TypeScript in the box, starting with Visual Studio 2013 Update 2.
+						You can also find TypeScript support in:
+						<ul>
+							<li>Visual Studio Code</li>
+							<li>WebStorm</li>
+							<li>Atom</li>
+							<li>Sublime Text</li>
+							<li>and Eclipse for you crazy people</li>
+						</ul>
 					</p>
+				</section>
+
+				<section>
+					<h2>Basic usage</h2>
+				<p>In order to use JSX you must do two things. (and be using TypeScript 1.6 beta or nightly)</p>
+
+    <ol><li>Name your files with the .tsx extension</li>
+  <li>Enable the <code>jsx</code> option in the command line or a <code>ts.config</code> file</li>
+</ol>
 				</section>
 
 				<section>
 					<h2>Type Variables</h2>
+					<p>Since TypeScript uses angle brackets for type assertions, there was a conflict when parsing between type assertions and JSX</p>
 					<pre><code>
 function identity(arg: number): number {
     return arg;
@@ -88,63 +141,62 @@ function identity(arg: any): any {
     return arg;
 }
 
-function identity<T>(arg: T): T {
+function identity&lt;T>(arg: T): T {
     return arg;
 }
+
 //type of output will be 'string'
 var output = identity("myString");
-</code></pre>
-					<p>Code syntax highlighting courtesy of <a href="http://softwaremaniacs.org/soft/highlight/en/description/">highlight.js</a>.</p>
-				</section>
+</code>
+</pre></section>
+<section>
+	<h2>Using the <code style="text-transform:lowercase;font-style:normal;">as</code> operator</h2>
+		<p>Angle bracket type assertions are not available in .tsx files</p>
+	<pre>
+		<code>
+//I think this is how 'as' works
+function identity as T (arg: T): T {
+  return arg;
+}
 
-				<section>
-					<h2>Marvelous List</h2>
-					<ul>
-						<li>No order here</li>
-						<li>Or here</li>
-						<li>Or here</li>
-						<li>Or here</li>
-					</ul>
-				</section>
+//type of output should be 'string'
+var output = identity("myString");
+</code>
+	</pre>
+	<p>
+		The <code>as</code> operator is available in both <code>.ts</code> and <code>.tsx</code> files.
+	</p>
+	<p>
+		<small>See TypeScript issue <a href="https://github.com/Microsoft/TypeScript/issues/296">#296</a> for the <code>as</code> operator discussion</small>
+	</p>
+</section>
 
-				<section>
-					<h2>Fantastic Ordered List</h2>
-					<ol>
-						<li>One is smaller than...</li>
-						<li>Two is smaller than...</li>
-						<li>Three!</li>
-					</ol>
-				</section>
+<section>
+	<h2>Type Checking</h2>
+</section>
 
-				<section>
-					<h2>Tabular Tables</h2>
-					<table>
-						<thead>
-							<tr>
-								<th>Item</th>
-								<th>Value</th>
-								<th>Quantity</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>Apples</td>
-								<td>$1</td>
-								<td>7</td>
-							<tr>
-							<tr>
-								<td>Lemonade</td>
-								<td>$2</td>
-								<td>18</td>
-							<tr>
-							<tr>
-								<td>Bread</td>
-								<td>$3</td>
-								<td>2</td>
-							<tr>
-						</tbody>
-					</table>
-				</section>
+<section>
+	<h2>Escaping to TypeScript</h2>
+	<p>
+		JSX in JavaScript allows you to escape to JavaScript by using curly braces { }. JSX in TypeScript allows you to do the same thing, but you escape to TypeScript. That means transpilation features and type checking still work when embedded within JSX.
+	</p>
+	<pre><code>
+var a = &lt;div>
+  {['foo', 'bar'].map(i => &lt;span>{i/2}&lt;/span>)}
+&lt;/div>
+	</code></pre>
+	<p>
+		The above code will result in an error since you cannot divide a string by a number.
+	</p>
+</section>
+
+<section>
+	<h2>React integration</h2>
+	<p>
+		To use JSX with React you should use the <a href="https://github.com/borisyankov/DefinitelyTyped/tree/master/react">React typings</a>
+		from <a href="https://github.com/borisyankov/DefinitelyTyped">Definitely Typed</a>. These typings define the JSX namespace appropriately for use with React.
+	</p>
+</section>
 
 				<section>
 					<h2>Clever Quotes</h2>
@@ -158,76 +210,6 @@ var output = identity("myString");
 					</blockquote>
 				</section>
 
-				<section>
-					<h2>Intergalactic Interconnections</h2>
-					<p>
-						You can link between slides internally,
-						<a href="#/2/3">like this</a>.
-					</p>
-				</section>
-
-				<section>
-					<h2>Speaker View</h2>
-					<p>There's a <a href="https://github.com/hakimel/reveal.js#speaker-notes">speaker view</a>. It includes a timer, preview of the upcoming slide as well as your speaker notes.</p>
-					<p>Press the <em>S</em> key to try it out.</p>
-
-					<aside class="notes">
-						Oh hey, these are some notes. They'll be hidden in your presentation, but you can see them if you open the speaker notes window (hit 's' on your keyboard).
-					</aside>
-				</section>
-
-				<section>
-					<h2>Export to PDF</h2>
-					<p>Presentations can be <a href="https://github.com/hakimel/reveal.js#pdf-export">exported to PDF</a>, here's an example:</p>
-					<iframe src="//www.slideshare.net/slideshow/embed_code/42840540" width="445" height="355" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:3px solid #666; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>
-				</section>
-
-				<section>
-					<h2>Global State</h2>
-					<p>
-						Set <code>data-state="something"</code> on a slide and <code>"something"</code>
-						will be added as a class to the document element when the slide is open. This lets you
-						apply broader style changes, like switching the page background.
-					</p>
-				</section>
-
-				<section data-state="customevent">
-					<h2>State Events</h2>
-					<p>
-						Additionally custom events can be triggered on a per slide basis by binding to the <code>data-state</code> name.
-					</p>
-					<pre><code class="javascript" data-trim contenteditable style="font-size: 18px;">
-Reveal.addEventListener( 'customevent', function() {
-	console.log( '"customevent" has fired' );
-} );
-					</code></pre>
-				</section>
-
-				<section>
-					<h2>Take a Moment</h2>
-					<p>
-						Press B or . on your keyboard to pause the presentation. This is helpful when you're on stage and want to take distracting slides off the screen.
-					</p>
-				</section>
-
-				<section>
-					<h2>Much more</h2>
-					<ul>
-						<li>Right-to-left support</li>
-						<li><a href="https://github.com/hakimel/reveal.js#api">Extensive JavaScript API</a></li>
-						<li><a href="https://github.com/hakimel/reveal.js#auto-sliding">Auto-progression</a></li>
-						<li><a href="https://github.com/hakimel/reveal.js#parallax-background">Parallax backgrounds</a></li>
-						<li><a href="https://github.com/hakimel/reveal.js#keyboard-bindings">Custom keyboard bindings</a></li>
-					</ul>
-				</section>
-
-				<section style="text-align: left;">
-					<h1>THE END</h1>
-					<p>
-						- <a href="http://slides.com">Try the online editor</a> <br>
-						- <a href="https://github.com/hakimel/reveal.js">Source code &amp; documentation</a>
-					</p>
-				</section>
 
 			</div>
 
@@ -251,11 +233,8 @@ Reveal.addEventListener( 'customevent', function() {
 				// Optional reveal.js plugins
 				dependencies: [
 					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
-					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
-					{ src: 'plugin/zoom-js/zoom.js', async: true },
-					{ src: 'plugin/notes/notes.js', async: true }
+				{ src: 'plugin/zoom-js/zoom.js', async: true },
+				{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } }
 				]
 			});
 
