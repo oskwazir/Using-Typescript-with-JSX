@@ -59,6 +59,17 @@
 				</section>
 
 				<section>
+					<h2>What &amp; Why</h2>
+				
+				<ul>
+				<li>Reliabily building large JS apps is hard</li>
+				<li>TypeScript is a typed superset of JavaScript that compiles to plain JavaScript.</li>
+				<li>Static Types lead to better Tooling</li>
+				<li>Future features available today (transpiling)</li>
+				<li>Open Source</li>
+				</ul>
+				</section>
+				<section>
 					<h2>What TypeScript offers</h2>
 					<p>
 						<a href="https://github.com/Microsoft/TypeScript-Handbook/blob/master/pages/Basic%20Types.md#string">String</a> &#183; <a href="https://github.com/Microsoft/TypeScript-Handbook/blob/master/pages/Basic%20Types.md#number">Number</a> &#183; <a href="https://github.com/Microsoft/TypeScript-Handbook/blob/master/pages/Basic%20Types.md#boolean">Boolean</a>
@@ -100,8 +111,8 @@ npm install -g typescript@next
 				<h2>Running TypeScript</h2>
 				<ul>
 				<li>You can call <code>tsc</code> in the command line if TypeScript is installed globally.</li>
-				<li>Run TypeScript in a <code>gulp</code> task using <code>gulp-typescript</code> to help you.</li>
-				<li>I don't understand WebPack so maybe there's a way to get it to work too</li>
+				<li>Run TypeScript in a <code>gulp</code> task using <a href="https://www.npmjs.com/package/gulp-typescript"><code>gulp-typescript</code></a> to help you.</li>
+				<li>Use <a href="https://www.npmjs.com/package/ts-loader"><code>ts-loader</code></a> for WebPack</li>
 			<li>IDE/Editor can run TypeScript to check your code</li></ul>
 			</section>
 
@@ -122,31 +133,37 @@ npm install -g typescript@next
 
 				<section>
 					<h2>Basic usage</h2>
-				<p>In order to use JSX you must do two things. (and be using TypeScript 1.6 beta or nightly)</p>
+				<p>In order to use JSX you must do two things. <small>and be using TypeScript 1.6 beta or nightly</small></p>
 
-    <ol><li>Name your files with the .tsx extension</li>
+    <ol><li>Name your files with the <code>.tsx</code> extension</li>
   <li>Enable the <code>jsx</code> option in the command line or a <code>ts.config</code> file</li>
 </ol>
 				</section>
 
+<section>
+	<h2>React integration</h2>
+	<p>
+		To use JSX with React you should use the <a href="https://github.com/borisyankov/DefinitelyTyped/tree/master/react">React typings</a>
+		from <a href="https://github.com/borisyankov/DefinitelyTyped">Definitely Typed</a>. These typings define the JSX namespace appropriately for use with React.
+	</p>
+	<p><small>There is <a href="https://www.npmjs.com/package/tsd">TypeScript Definition manager</a> on npm to help manage with definition files</small></p>
+</section>
+
 				<section>
 					<h2>Type Variables</h2>
-					<p>Since TypeScript uses angle brackets for type assertions, there was a conflict when parsing between type assertions and JSX</p>
+					<p>Since TypeScript uses angle brackets for type casting, there was a conflict when parsing between type casting and JSX</p>
 					<pre><code>
-function identity(arg: number): number {
-    return arg;
-}
+//casting syntax					
+//&lt;Type> variable
 
-function identity(arg: any): any {
-    return arg;
-}
+//setting span to be of a HTMLSpanElement type
+let span: HTMLSpanElement;
 
-function identity&lt;T>(arg: T): T {
-    return arg;
-}
+//fails becaue document.createElement returns a type of HTMLElement
+this.span = document.createElement('span');
 
-//type of output will be 'string'
-var output = identity("myString");
+//so you can cast
+this.span = &lt;HTMLSpanElement>document.createElement('span');
 </code>
 </pre></section>
 <section>
@@ -154,13 +171,17 @@ var output = identity("myString");
 		<p>Angle bracket type assertions are not available in .tsx files</p>
 	<pre>
 		<code>
-//I think this is how 'as' works
-function identity as T (arg: T): T {
-  return arg;
-}
+//new casting syntax					
+//variable as Type
 
-//type of output should be 'string'
-var output = identity("myString");
+//setting span to be of a HTMLSpanElement type
+let span: HTMLSpanElement;
+
+//fails becaue document.createElement returns a type of HTMLElement
+this.span = document.createElement('span');
+
+//so you can cast this way I think...
+this.span = document.createElement('span') as HTMLSpanElement;
 </code>
 	</pre>
 	<p>
@@ -169,10 +190,6 @@ var output = identity("myString");
 	<p>
 		<small>See TypeScript issue <a href="https://github.com/Microsoft/TypeScript/issues/296">#296</a> for the <code>as</code> operator discussion</small>
 	</p>
-</section>
-
-<section>
-	<h2>Type Checking</h2>
 </section>
 
 <section>
@@ -191,23 +208,15 @@ var a = &lt;div>
 </section>
 
 <section>
-	<h2>React integration</h2>
-	<p>
-		To use JSX with React you should use the <a href="https://github.com/borisyankov/DefinitelyTyped/tree/master/react">React typings</a>
-		from <a href="https://github.com/borisyankov/DefinitelyTyped">Definitely Typed</a>. These typings define the JSX namespace appropriately for use with React.
-	</p>
+	<h2>Type Checking JSX<small>Intrinsic elements vs Value-based elements</small></h2>
+
+	<p>This will probably make more sense in practice than in reading the documentation</p>
 </section>
 
 				<section>
-					<h2>Clever Quotes</h2>
-					<p>
-						These guys come in two forms, inline: <q cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
-						&ldquo;The nice thing about standards is that there are so many to choose from&rdquo;</q> and block:
-					</p>
-					<blockquote cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
-						&ldquo;For years there has been a theory that millions of monkeys typing at random on millions of typewriters would
-						reproduce the entire works of Shakespeare. The Internet has proven this theory to be untrue.&rdquo;
-					</blockquote>
+					<h2>Conclusion</h2>
+					<p>Would I use TypeScript with React &amp; and JSX today? I think I will start using it in personal React projects.
+					There’s still a lot about JSX type checking that I did’t understand.</p>
 				</section>
 
 
