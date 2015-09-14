@@ -60,7 +60,7 @@
 
 				<section>
 					<h2>What &amp; Why</h2>
-				
+
 				<ul>
 				<li>Reliabily building large JS apps is hard</li>
 				<li>TypeScript is a typed superset of JavaScript that compiles to plain JavaScript.</li>
@@ -70,9 +70,11 @@
 				</ul>
 				</section>
 				<section>
-					<h2>What TypeScript offers</h2>
+					<h2>What TypeScript offers <small>this list barely covers everything</small></h2>
 					<p>
-						<a href="https://github.com/Microsoft/TypeScript-Handbook/blob/master/pages/Basic%20Types.md#string">String</a> &#183; <a href="https://github.com/Microsoft/TypeScript-Handbook/blob/master/pages/Basic%20Types.md#number">Number</a> &#183; <a href="https://github.com/Microsoft/TypeScript-Handbook/blob/master/pages/Basic%20Types.md#boolean">Boolean</a>
+						<a href="https://github.com/Microsoft/TypeScript-Handbook/blob/master/pages/Basic%20Types.md#string">String</a> &#183;
+						 <a href="https://github.com/Microsoft/TypeScript-Handbook/blob/master/pages/Basic%20Types.md#number">Number</a>
+						  &#183; <a href="https://github.com/Microsoft/TypeScript-Handbook/blob/master/pages/Basic%20Types.md#boolean">Boolean</a>  &#183;
 						<a href="https://github.com/Microsoft/TypeScript-Handbook/blob/master/pages/Basic%20Types.md#enum">Enum</a> &#183;
 						<a href="https://github.com/Microsoft/TypeScript-Handbook/blob/master/pages/Basic%20Types.md#any">Any</a> &#183;
 						<a href="https://github.com/Microsoft/TypeScript-Handbook/blob/master/pages/Basic%20Types.md#void">Void</a>  &#183; Symbols  &#183; let &amp; const  &#183; ES7 Decorators proposal  &#183; Decorator type metadata  &#183;
@@ -86,8 +88,8 @@
 							 &#183; <a href="https://github.com/Microsoft/TypeScript-Handbook/blob/master/pages/Declaration%20Merging.md">Declaration Merging</a>
 							 &#183; <a href="https://github.com/Microsoft/TypeScript-Handbook/blob/master/pages/Type%20Compatibility.md">Structural Subtyping</a> &#183;
 							  <a href="https://github.com/Microsoft/TypeScript-Handbook/blob/master/pages/Writing%20Definition%20Files.md">Definition Files</a> &#183;
-								 <a href="https://github.com/Microsoft/TypeScript/wiki/What%27s-new-in-TypeScript">...and in release 1.6 JSX! &#183;  Intersection types! &#183;  Local type declarations! &#183; Class expressions! &#183; Extending expressions!
-									  &#183;  Abstract classes!</a>   &#183; TypeScript has <span style="font-weight:700;">A LOT</span> of features
+								 <a href="https://github.com/Microsoft/TypeScript/wiki/What%27s-new-in-TypeScript">...and in release 1.6 JSX! &#183;  Intersection types &#183;  Local type declarations &#183; Class expressions &#183; Extending expressions
+									  &#183;  Abstract classes</a>   &#183; TypeScript has <span style="font-weight:700;">A LOT</span> of features
 
 					</p>
 				</section>
@@ -139,39 +141,82 @@ npm install -g typescript@next
   <li>Enable the <code>jsx</code> option in the command line or a <code>ts.config</code> file</li>
 </ol>
 				</section>
-
+				<section>
+					<h2>React integration</h2>
+					<p>
+						To use JSX with React you should use the <a href="https://github.com/borisyankov/DefinitelyTyped/tree/master/react">React typings</a>
+						from <a href="https://github.com/borisyankov/DefinitelyTyped">Definitely Typed</a>. These typings define the JSX namespace appropriately for use with React.
+					</p>
+					<p><small>There is <a href="https://www.npmjs.com/package/tsd">TypeScript Definition manager</a> on npm to help manage with definition files</small></p>
+				</section>
 <section>
-	<h2>React integration</h2>
-	<p>
-		To use JSX with React you should use the <a href="https://github.com/borisyankov/DefinitelyTyped/tree/master/react">React typings</a>
-		from <a href="https://github.com/borisyankov/DefinitelyTyped">Definitely Typed</a>. These typings define the JSX namespace appropriately for use with React.
-	</p>
-	<p><small>There is <a href="https://www.npmjs.com/package/tsd">TypeScript Definition manager</a> on npm to help manage with definition files</small></p>
+	<section>
+		<h2>Working through errors</h2>
+	</section>
+
+	<section>
+	<h2>Default props must be static</h2>
+	<pre>
+		<code>
+	class App extends React.Component {
+	  constructor(props){
+	    super(props)
+	    this.state = {count: 0}
+	    this.increment = this.increment.bind(this);
+	  }
+	  static defaultProps = {
+	    txt: 'default props txt'
+	  }
+	...
+		</code>
+	</pre>
+	</section>
+
+	<section>
+		<h2>Create Props and State interfaces</h2>
+		<pre>
+			<code>
+	import * as React from 'react';
+
+	interface Props {
+	  txt: string;
+	}
+
+	interface State{
+	  count: number;
+	}
+
+
+	// Render a simple React component into the body.
+	class App extends React.Component&lt;Props, State> {...}
+		</code>
+		</pre>
+	</section>
 </section>
 
 				<section>
-					<h2>Type Variables</h2>
+					<h2>Type Variables<small>this is why JSX never worked in TypeScript</small></h2>
 					<p>Since TypeScript uses angle brackets for type casting, there was a conflict when parsing between type casting and JSX</p>
 					<pre><code>
-//casting syntax					
+//casting syntax
 //&lt;Type> variable
 
 //setting span to be of a HTMLSpanElement type
 let span: HTMLSpanElement;
 
-//fails becaue document.createElement returns a type of HTMLElement
+//fails because document.createElement returns a type of HTMLElement
 this.span = document.createElement('span');
 
-//so you can cast
-this.span = &lt;HTMLSpanElement>document.createElement('span');
+//so you need to cast
+this.span = &lt;HTMLSpanElement> document.createElement('span');
 </code>
 </pre></section>
 <section>
 	<h2>Using the <code style="text-transform:lowercase;font-style:normal;">as</code> operator</h2>
-		<p>Angle bracket type assertions are not available in .tsx files</p>
+		<p>Angle bracket type assertions are not available in <code>.tsx</code> files</p>
 	<pre>
 		<code>
-//new casting syntax					
+//new casting syntax
 //variable as Type
 
 //setting span to be of a HTMLSpanElement type
@@ -214,9 +259,25 @@ var a = &lt;div>
 </section>
 
 				<section>
-					<h2>Conclusion</h2>
-					<p>Would I use TypeScript with React &amp; and JSX today? I think I will start using it in personal React projects.
-					There’s still a lot about JSX type checking that I did’t understand.</p>
+					<h2>Should I use TypeScript now</h2>
+					<ul>
+						<li>Do you want to write ES6?</li>
+						<ul>
+							<li>ES6 support up to 56&#37; of features</li>
+						</ul>
+						<li>Do you use WebStorm, Atom, or some other editor?</li>
+							<ul>
+								<li>Many popular editors have packages for TypeScript</li>
+							</ul>
+						<li>Do you develop on Windows?</li>
+						<ul>
+							<li>One package installed via npm</li>
+							<li>It's a Microsoft project and C# designer Anders Hejlsberg is heavily involved </li>
+						</ul>
+						<li>JSX support is in beta</li>
+						<li>Documentation of features could be better</li>
+						</ul>
+					</ul>
 				</section>
 
 
