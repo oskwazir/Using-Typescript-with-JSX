@@ -44,7 +44,7 @@
 			<div class="slides">
 				<section>
 					<h1>JSX &amp; TypeScript</h1>
-					<h3>Figuring out how to use them together</h3>
+					<h3>How to use them together</h3>
 					<p>
 						<small><a href="https://github.com/thewazir">Omer Wazir</a> / <a href="http://twitter.com/thewazir">@thewazir</a></small>
 					</p>
@@ -54,7 +54,7 @@
 					<h2>Disclaimer</h2>
 					<p>
 						JSX support in TypeScript was announced Sept 2nd 2015. Almost every article on this topic rips from the <a href="https://github.com/Microsoft/TypeScript/wiki/JSX">JSX page on the
-						TypeScript wiki</a> because there's very little officially said on the topic. This presentation is based off the same wiki post.
+						TypeScript wiki</a> because there’s very little officially said on the topic. This presentation is based off the same wiki post.
 					</p>
 				</section>
 
@@ -70,7 +70,7 @@
 				</ul>
 				</section>
 				<section>
-					<h2>What TypeScript offers <small>this list barely covers everything</small></h2>
+					<h2>Some features of TypeScript</h2>
 					<p>
 						<a href="https://github.com/Microsoft/TypeScript-Handbook/blob/master/pages/Basic%20Types.md#string">String</a> &#183;
 						 <a href="https://github.com/Microsoft/TypeScript-Handbook/blob/master/pages/Basic%20Types.md#number">Number</a>
@@ -88,9 +88,12 @@
 							 &#183; <a href="https://github.com/Microsoft/TypeScript-Handbook/blob/master/pages/Declaration%20Merging.md">Declaration Merging</a>
 							 &#183; <a href="https://github.com/Microsoft/TypeScript-Handbook/blob/master/pages/Type%20Compatibility.md">Structural Subtyping</a> &#183;
 							  <a href="https://github.com/Microsoft/TypeScript-Handbook/blob/master/pages/Writing%20Definition%20Files.md">Definition Files</a> &#183;
-								 <a href="https://github.com/Microsoft/TypeScript/wiki/What%27s-new-in-TypeScript">...and in release 1.6 JSX! &#183;  Intersection types &#183;  Local type declarations &#183; Class expressions &#183; Extending expressions
-									  &#183;  Abstract classes</a>   &#183; TypeScript has <span style="font-weight:700;">A LOT</span> of features
+								 <a href="https://github.com/Microsoft/TypeScript/wiki/What%27s-new-in-TypeScript">...and in release 1.6</a>&#58; JSX! &#183;  Intersection types &#183;  Local type declarations &#183; Class expressions &#183; Extending expressions
+									  &#183; Abstract classes</a>
 
+					</p>
+					<p>
+						<small>TypeScript has <span style="font-weight:700;">MANY</span> other features besides what you see here</small>
 					</p>
 				</section>
 
@@ -99,14 +102,18 @@
 					<p>JSX support is coming in TypeScript 1.6 which is in a beta state.<br />
 						For now you can install these two ways</p>
 						<pre><code>
-//1.6.0-beta with JSX Support
+/*
+* Install globally or locally - your choice
+*/
+
+//1.6.0-beta with JSX support
 npm install typescript@1.6.0-beta
 
-//Nightly build
-npm install -g typescript@next
+//Nightly build with JSX support
+npm install typescript@next
 							</code>
 						</pre>
-						<p>Works wherever Node works</p>
+						<p>Works wherever npm works</p>
 				</section>
 
 			<section>
